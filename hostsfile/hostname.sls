@@ -11,7 +11,7 @@
 {%- elif grains['os_family'] == 'Debian' %}
 /etc/hostname:
   file.managed:
-    - content: {{ fqdn }}
+    - contents: {{ fqdn }}
     - backup: false
 {% endif %}
 
