@@ -20,7 +20,7 @@ Available states
 
 Uses the salt mine function __network.ip_addrs__ to add minion ids and their regarding ips to the local hosts file.
 This works best if the minion id is the fqdn and (if the machines have more than one interface) the desired interface to use
-for this is configured with the mine function:
+for this is configured with the mine function::
 
     mine_functions:
       network.interfaces: []
