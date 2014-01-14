@@ -21,7 +21,7 @@
     - ip: {{ addrlist|first() }}
     - names:
       - {{ name }}
-{%- if short_name != name and salt['pillar.get']('hostsfile:generate_shortname') %}
+{%- if short_name != name and salt['pillar.get']('hostsfile:generate_shortname', True) %}
       - {{ short_name }}
 {%- endif %}
 
