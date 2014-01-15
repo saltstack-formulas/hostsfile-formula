@@ -1,19 +1,17 @@
 # This is currently intended for ec2 hosts that come with sth like ip-10-10-0-123 for a hostname.
 # To match the hostname with the entries created by the hostsfile state, also execute this state.
-# python-augeas is needed to persist the hostname on Redhat-based systems.
 
 {%- set fqdn = grains['id'] %}
 {%- if grains['os_family'] == 'RedHat' %}
 
-# augeas is used here to provide a minimal network file (where none existed)
-# without wiping out unrelated lines in a pre-existing file
-
 etc-sysconfig-network:
-  augeas.setvalue:
-    - prefix: /files/etc/sysconfig/network
-    - changes:
-      - NETWORKING: 'yes'
-      - HOSTNAME: {{ fqdn }}
+  cmd.run:
+    - name: echo -e "NETWORKING=yes\nHOSTNAME={{ fqdn }}\n" > /etc/sysconfig/network
+    - unless: test -f /etc/sysconfig/network
+  file.replace:
+    - name: /etc/sysconfig/network
+    - pattern: HOSTNAME=localhost.localdomain
+    - repl: HOSTNAME={{ fqdn }}
 
 {% endif %}
 
