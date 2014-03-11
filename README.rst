@@ -1,8 +1,7 @@
-===
 hostsfile
-===
+=========
 
-Formula to set up name resolution for all members of a salt cluster in /etc/hosts
+Formula to set up name resolution for all members of a salt cluster in /etc/hosts.
 
 .. note::
 
@@ -18,8 +17,14 @@ Available states
 ``hostsfile``
 -------
 
-Uses the salt mine function __network.ip_addrs__ to add minion ids and their regarding ips to the local hosts file.
-This works best if the minion id is the fqdn and (if the machines have more than one interface) the desired interface to use
+Uses the `Salt Mine <http://docs.saltstack.com/topics/mine/>`_ function ``network.ip_addrs`` to add minion ids and their regarding ips to the local hosts file.
+
+You **must** enable this function in ``/etc/salt/minion`` for the state to work::
+
+    mine_functions:
+      network.ip_addrs: []
+
+The formula works best if the minion id is the fqdn and (if the machines have more than one interface) the desired interface to use
 for this is configured with the mine function::
 
     mine_functions:
