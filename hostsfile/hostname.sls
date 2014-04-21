@@ -15,10 +15,17 @@ etc-sysconfig-network:
 
 {% endif %}
 
+{%- if grains['os_family'] == 'Suse' %}
+/etc/HOSTNAME:
+  file.managed:
+    - contents: {{ fqdn }}
+    - backup: false
+{% else %}
 /etc/hostname:
   file.managed:
     - contents: {{ fqdn }}
     - backup: false
+{% endif %}
 
 set-fqdn:
   cmd.run:
