@@ -15,16 +15,11 @@
 {%- set if = grains['maintain_hostsfile_interface'] %}
 
 {%- for name, addrlist in addrs.items() %}
-{%- set short_name = name.split('.') | first %}
 {{ name }}-host-entry:
   host.present:
     - ip: {{ addrlist|first() }}
     - names:
       - {{ name }}
-{%- if short_name != name and salt['pillar.get']('hostsfile:generate_shortname', True) %}
-      - {{ short_name }}
-{%- endif %}
-
 {% endfor %}
 
 {% endif %}
