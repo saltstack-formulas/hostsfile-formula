@@ -12,7 +12,6 @@
 {%- set addrs = salt['mine.get']('*', 'network.ip_addrs') %}
 
 {%- if addrs is defined %}
-{%- set if = grains['maintain_hostsfile_interface'] %}
 
 {%- for name, addrlist in addrs.items() %}
 {{ name }}-host-entry:
