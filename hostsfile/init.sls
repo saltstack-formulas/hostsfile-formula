@@ -9,7 +9,8 @@
 #    - eth1
 #  mine_interval: 2
 
-{%- set addrs = salt['mine.get']('*', 'network.ip_addrs') %}
+{%- set minealias = salt['pillar.get']('hostsfile:alias', 'network.ip_addrs') %}
+{%- set addrs = salt['mine.get']('*', minealias) %}
 
 {%- if addrs is defined %}
 
@@ -22,4 +23,3 @@
 {% endfor %}
 
 {% endif %}
-
