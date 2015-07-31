@@ -17,9 +17,23 @@ Available states
 ``hostsfile``
 -------
 
-Uses the `Salt Mine <http://docs.saltstack.com/topics/mine/>`_ function ``network.ip_addrs`` to add minion ids and their regarding ips to the local hosts file.
+The default behavior is to add entries to
+the hostsfile based on addresses collected
+via the `Salt Mine`_ function ``network.ip_addrs``.
+This will map minion ids and their regarding 
+IPs to the local hosts file.
 
-At a minimum, you must enable the network.ip_addrs function in pillar or in ``/etc/salt/minion``::
+.. _Salt Mine: http://docs.saltstack.com/topics/mine/
+
+To disable this set ``pillar['hostsfile:sources']``
+to a list excluding the member ``'mine'``.
+To only use the state ``hostsfile.static``
+set ``pillar['hostsfile:sources']`` to
+``['pillar]``.
+
+For the default `Salt Mine`_ based approach to 
+work you must enable the ``network.ip_addrs`` 
+function in pillar or in ``/etc/salt/minion``::
 
     mine_functions:
       network.ip_addrs: []
