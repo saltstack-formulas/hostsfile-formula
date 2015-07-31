@@ -48,3 +48,20 @@ If you are already using network.ip_addrs for something else (perhaps another st
 Also set and persist the hostname (again - using the minion id). This has so far been most useful on EC2 instances.
 
 Works on RedHat/CentOS 5.X or RedHat/CentOS 6.X and Amazon OS - should also work on Ubuntu/Debian.
+
+``hostsfile.static``
+--------------------
+
+Reads IP assignments from the pillar key
+``hostsfile:static_entries``. The format
+is a mapping from one IP address to a list
+of names::
+
+    hostsfile:
+        static_entries:
+            8.8.8.8:
+                - dns.google.com
+            198.58.116.50:
+                - www.saltstack.com
+                - saltstack.com
+               
