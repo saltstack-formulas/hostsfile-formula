@@ -2,6 +2,7 @@
 # To match the hostname with the entries created by the hostsfile state, also execute this state.
 
 {%- set fqdn = grains['id'] %}
+{%- set localip = grains['fqdn_ip4'] %}
 {%- if grains['os_family'] == 'RedHat' %}
 
 etc-sysconfig-network:
@@ -25,6 +26,11 @@ etc-sysconfig-network:
   file.managed:
     - contents: {{ fqdn }}
     - backup: false
+{{ fqdn }}-hosts-entry:
+  host.present:
+    - ip: {{ localip }}
+    - names:
+      - {{ fqdn }}
 {% endif %}
 
 set-fqdn:
