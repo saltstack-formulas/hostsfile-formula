@@ -17,7 +17,11 @@
 {%- for name, addrlist in addrs.items() %}
 {{ name }}-host-entry:
   host.present:
-    - ip: {{ addrlist|first() }}
+{% if addrlist is string %}
+    - ip: {{ addrlist }}
+{% else %}
+    - ip: {{ addrlist|first }}
+{% endif %}
     - names:
       - {{ name }}
 {% endfor %}
