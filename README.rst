@@ -32,7 +32,7 @@ The formula works best if the minion id is the fqdn and (if the machines have mo
         - eth1
     mine_interval: 2
 
-If you are already using network.ip_addrs for something else (perhaps another state that wants information on a different interface than hostsfile should use), you can specify a mine alias in pillar to query instead:
+If you are already using network.ip_addrs for something else (perhaps another state that wants information on a different interface than hostsfile should use), you can specify a mine alias in pillar to query instead::
 
     hostsfile:
       alias: hostsfile_interface
@@ -41,6 +41,11 @@ If you are already using network.ip_addrs for something else (perhaps another st
       hostsfile_interface:
         mine_function: network.ip_addrs
         iface: eth0
+
+By default all minions in mine are added to the hosts file, but that can be overridden too::
+
+    hostsfile:
+      filter: '*-thisdatacenter-something'
 
 ``hostsfile.hostname``
 --------------

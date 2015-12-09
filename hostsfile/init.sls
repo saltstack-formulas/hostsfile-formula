@@ -10,7 +10,9 @@
 #  mine_interval: 2
 
 {%- set minealias = salt['pillar.get']('hostsfile:alias', 'network.ip_addrs') %}
-{%- set addrs = salt['mine.get']('*', minealias) %}
+{%- set minion_filter = salt['pillar.get']('hostsfile:filter', '*') %}
+
+{%- set addrs = salt['mine.get'](minion_filter, minealias) %}
 
 {%- if addrs is defined %}
 
