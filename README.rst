@@ -45,7 +45,14 @@ If you are already using network.ip_addrs for something else (perhaps another st
 By default all minions in mine are added to the hosts file, but that can be overridden too::
 
     hostsfile:
-      filter: '*-thisdatacenter-something'
+      minions: '*-thisdatacenter-something'
+
+And you can add explicit entries for non-mine hosts as well::
+
+    hostsfile:
+      hosts:
+        server1: 10.10.10.10
+        server2: 10.10.10.11
 
 ``hostsfile.hostname``
 --------------
