@@ -29,5 +29,9 @@ etc-sysconfig-network:
 
 set-fqdn:
   cmd.run:
+    {% if grains["init"] == "systemd" %}
+    - name: hostnamectl set-hostname {{ fqdn }}
+    {% else %}
     - name: hostname {{ fqdn }}
-    - unless: test "{{ fqdn }}" == "$(hostname)"
+    {% endif %}
+    - unless: test "{{ fqdn }}" = "$(hostname)"
