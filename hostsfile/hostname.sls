@@ -34,4 +34,4 @@ set-fqdn:
     {% else %}
     - name: hostname {{ fqdn }}
     {% endif %}
-    - unless: test "{{ fqdn }}" == "$(hostname)"
+    - unless: test "{{ fqdn }}" = "$(hostname)"
