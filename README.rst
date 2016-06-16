@@ -47,6 +47,12 @@ By default all minions in mine are added to the hosts file, but that can be over
     hostsfile:
       minions: '*-thisdatacenter-something'
 
+By default specified minions in mine are added to the hosts file::
+
+    hostsfile:
+      minions: 'zk[1-5] and kafka[1-5]'
+      type: 'compound'
+
 And you can add explicit entries for non-mine hosts as well::
 
     hostsfile:
