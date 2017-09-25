@@ -20,6 +20,7 @@
 {%- endif %}
 {%- do hosts.update(pillar_hosts) %}
 
+{%- set domain = salt.pillar.get('hostsfile:domain', '') %}
 {%- for name, addrlist in hosts.items() %}
 {{ name }}-host-entry:
   host.present:
@@ -30,4 +31,7 @@
 {% endif %}
     - names:
       - {{ name }}
+  {%- if domain %}
+      - {{ name }}.{{ domain }}
+  {%- endif %}
 {% endfor %}
