@@ -14,6 +14,7 @@
 {%- set minions_type = salt['pillar.get']('hostsfile:type', 'glob')%}
 {%- set hosts = {} %}
 {%- set pillar_hosts = salt['pillar.get']('hostsfile:hosts', {}) %}
+{%- set pillar_only = salt['pillar.get']('hostsfile:only', {}) %}
 {%- set mine_hosts = salt['mine.get'](minions, minealias, expr_form=minions_type) %}
 {%- if mine_hosts is defined %}
 {%-   do hosts.update(mine_hosts) %}
@@ -34,4 +35,16 @@
   {%- if domain %}
       - {{ name }}.{{ domain }}
   {%- endif %}
+{% endfor %}
+
+{%- for ip, hostnames in pillar_only.items() %}
+{{ ip }}-host-entry:
+  host.only:
+    - name: {{ ip }}
+  {% if hostnames is string %}
+    - hostnames:
+      - {{ hostnames }}
+  {% else %}
+    - hostnames: {{ hostnames | json }}
+  {% endif %}
 {% endfor %}
