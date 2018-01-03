@@ -60,6 +60,25 @@ And you can add explicit entries for non-mine hosts as well::
         server1: 10.10.10.10
         server2: 10.10.10.11
 
+To reduce the hostnames for an IP to those given in pillar
+you can place them in ``pillar[hostsfile:only]``::
+
+    hostsfile:
+      only:
+        10.10.10.10:
+            - server1.my.domain
+            - server1
+        10.10.10.11:
+            - server2.my.domain
+            - server2
+
+To remove an IP from the hostsfile specify an empty list
+of hostnames::
+
+    hostsfile:
+        only:
+            127.0.1.1: []
+
 ``hostsfile.hostname``
 --------------
 
