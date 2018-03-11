@@ -1,2 +1,10 @@
 hostsfile:
   domain: example.com
+  hosts:
+    dns.quad9.net: 9.9.9.9
+  only:
+    127.0.0.1:
+      - localhost
+      - localhost.localdomain
+    # Removes all entries for 127.0.1.1:
+    127.0.1.1: []
