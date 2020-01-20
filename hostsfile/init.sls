@@ -11,7 +11,7 @@
 
 {%- set minealias = salt['pillar.get']('hostsfile:alias', 'network.ip_addrs') %}
 {%- set minions = salt['pillar.get']('hostsfile:minions', '*') %}
-{%- set minions_type = salt['pillar.get']('hostsfile:type', 'glob')%}
+{%- set minions_type = salt['pillar.get']('hostsfile:type', 'glob') %}
 {%- set hosts = {} %}
 {%- set pillar_hosts = salt['pillar.get']('hostsfile:hosts', {}) %}
 {%- set pillar_only = salt['pillar.get']('hostsfile:only', {}) %}
