@@ -1,7 +1,7 @@
 name: hostsfile
 os: Debian, Ubuntu, Raspbian, RedHat, Fedora, CentOS, Suse, openSUSE
 os_family: Debian, RedHat, Suse, Gentoo, Arch
-version: 0.1
+version: 0.8.0
 release: 1
 minimum_version: 2017.7
 summary: hostsfile formula
