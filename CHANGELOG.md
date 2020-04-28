@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.1](https://github.com/saltstack-formulas/hostsfile-formula/compare/v0.8.0...v0.8.1) (2020-04-28)
+
+
+### Bug Fixes
+
+* **init:** use `salt['pillar.get']` to avoid bogus entries ([ac98bb8](https://github.com/saltstack-formulas/hostsfile-formula/commit/ac98bb84d7492c1420557ffb0ae09855199f1b12)), closes [#26](https://github.com/saltstack-formulas/hostsfile-formula/issues/26)
+
+
+### Continuous Integration
+
+* **gemfile.lock:** add to repo with updated `Gemfile` [skip ci] ([cc147ec](https://github.com/saltstack-formulas/hostsfile-formula/commit/cc147ec0e72f0a4b9014d001e008216de13eb208))
+* **kitchen:** avoid using bootstrap for `master` instances [skip ci] ([01ca5cc](https://github.com/saltstack-formulas/hostsfile-formula/commit/01ca5cc62af94aff2116190f85a5539c709701ce))
+
 # [0.8.0](https://github.com/saltstack-formulas/hostsfile-formula/compare/v0.7.1...v0.8.0) (2020-01-20)
 
 
