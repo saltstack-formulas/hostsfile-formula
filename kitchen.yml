@@ -312,6 +312,7 @@ suites:
       state_top:
         base:
           '*':
+            - hostsfile._mapdata
             - hostsfile
       pillars:
         top.sls:
