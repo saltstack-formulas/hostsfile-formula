@@ -23,18 +23,16 @@
 
 {%- set domain = salt['pillar.get']('hostsfile:domain', '') %}
 {%- for name, addrlist in hosts.items() %}
+    {% if addrlist %}
 {{ name }}-host-entry:
   host.present:
-{% if addrlist is string %}
-    - ip: {{ addrlist }}
-{% else %}
-    - ip: {{ addrlist|first }}
-{% endif %}
+    - ip: {{ addrlist if addrlist is string else addrlist|first }}
     - names:
       - {{ name }}
-  {%- if domain %}
+        {%- if domain %}
       - {{ name }}.{{ domain }}
-  {%- endif %}
+        {%- endif %}
+    {%- endif %}
 {% endfor %}
 
 {%- for ip, hostnames in pillar_only.items() %}
