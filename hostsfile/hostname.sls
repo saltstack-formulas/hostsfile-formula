@@ -4,8 +4,8 @@
 {%- set fqdn = grains['id'] %}
 {%- if grains['os_family'] == 'Debian' %}
   {% set hostname = fqdn.split('.')[0] %}
-{% else %}
-  {% set hostname = fqdn %}
+{%- else %}
+  {%- set hostname = fqdn %}
 {% endif %}
 
 {%- if grains['os_family'] == 'RedHat' %}
@@ -32,6 +32,8 @@ etc-sysconfig-network:
     - contents: {{ hostname }}
     - backup: false
 {% endif %}
+    - onchanges_in:
+      - cmd: set-fqdn
 
 set-fqdn:
   cmd.run:
