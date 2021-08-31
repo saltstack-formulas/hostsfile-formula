@@ -10,7 +10,7 @@
 
 {%- if grains['os_family'] == 'RedHat' %}
 
-etc-sysconfig-network:
+hostsfile-etc-sysconfig-network:
   cmd.run:
     - name: echo -e "NETWORKING=yes\nHOSTNAME={{ hostname }}\n" > /etc/sysconfig/network
     - unless: test -f /etc/sysconfig/network
@@ -35,7 +35,13 @@ etc-sysconfig-network:
     - onchanges_in:
       - cmd: set-fqdn
 
-set-fqdn:
+hostsfile-{{ fqdn }}-hosts-entry:
+  host.present:
+    - ip: {{ grains.fqdn_ip4 }}
+    - names:
+      - {{ fqdn }}
+
+hostsfile-set-fqdn:
   cmd.run:
     {% if grains["init"] == "systemd" %}
     - name: hostnamectl set-hostname {{ hostname }}
