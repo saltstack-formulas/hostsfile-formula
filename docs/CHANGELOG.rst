@@ -2,6 +2,22 @@
 Changelog
 =========
 
+`0.9.0 <https://github.com/saltstack-formulas/hostsfile-formula/compare/v0.8.2...v0.9.0>`_ (2021-08-31)
+-----------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **changes:** set-fqdn should not alwasy change state (\ `101fdc5 <https://github.com/saltstack-formulas/hostsfile-formula/commit/101fdc5c5d015a5466494f78d5c4cb2773a5c280>`_\ )
+* **hostsfile:** do not add garbage if no alias (\ `26ebda1 <https://github.com/saltstack-formulas/hostsfile-formula/commit/26ebda12393234706a1e9f73f713a11d75bbe533>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **hostname:** add hostname to /etc/hosts (\ `acdb8f7 <https://github.com/saltstack-formulas/hostsfile-formula/commit/acdb8f7c4e634920e210ac8cbbd382c8a33c53fd>`_\ )
+
 `0.8.2 <https://github.com/saltstack-formulas/hostsfile-formula/compare/v0.8.1...v0.8.2>`_ (2021-08-31)
 -----------------------------------------------------------------------------------------------------------
 
