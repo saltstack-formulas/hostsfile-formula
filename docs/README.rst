@@ -44,7 +44,7 @@ Please see `How to contribute <https://github.com/saltstack-formulas/.github/blo
 Special notes
 -------------
 
-None.
+To enable the Salt Mine the `mine_functions` option `needs to be applied to a Minion <https://docs.saltproject.io/en/latest/topics/mine/#mine-functions>`_
 
 Available states
 ----------------
