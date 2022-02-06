@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.9.1](https://github.com/saltstack-formulas/hostsfile-formula/compare/v0.9.0...v0.9.1) (2022-02-06)
+
+
+### Bug Fixes
+
+* **typo:** corrected onchanges_in ([e6a0eaa](https://github.com/saltstack-formulas/hostsfile-formula/commit/e6a0eaa127091b17a85368e5c836a1843f0c6b88))
+
+
+### Continuous Integration
+
+* **gemfile:** allow rubygems proxy to be provided as an env var [skip ci] ([6da2294](https://github.com/saltstack-formulas/hostsfile-formula/commit/6da2294eed1d7810ad0b6a3da1ed265cc0d4c77f))
+* **kitchen+ci:** update with `3004` pre-salted images/boxes [skip ci] ([fc01102](https://github.com/saltstack-formulas/hostsfile-formula/commit/fc01102c371c7fe186c2d58ecb09e6aa9a828746))
+* **kitchen+ci:** update with latest CVE pre-salted images [skip ci] ([b654534](https://github.com/saltstack-formulas/hostsfile-formula/commit/b65453404b34a3f4aac3375112abd8497d4597c7))
+* **kitchen+gitlab:** update for new pre-salted images [skip ci] ([6d529be](https://github.com/saltstack-formulas/hostsfile-formula/commit/6d529be481b2ab8b7cc5aa24931d5f2b96d3b12a))
+
 # [0.9.0](https://github.com/saltstack-formulas/hostsfile-formula/compare/v0.8.2...v0.9.0) (2021-08-31)
 
 
