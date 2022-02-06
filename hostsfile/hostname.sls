@@ -33,7 +33,7 @@ hostsfile-etc-sysconfig-network:
     - backup: false
 {% endif %}
     - onchanges_in:
-      - cmd: set-fqdn
+      - cmd: hostsfile-set-fqdn
 
 hostsfile-{{ fqdn }}-hosts-entry:
   host.present:
