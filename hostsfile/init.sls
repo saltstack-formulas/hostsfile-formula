@@ -22,16 +22,21 @@
 {%- do hosts.update(pillar_hosts) %}
 
 {%- set domain = salt['pillar.get']('hostsfile:domain', '') %}
+{%- set shorthost = salt['pillar.get']('hostsfile:shorthost', False) %}
 {%- for name, addrlist in hosts.items() %}
     {% if addrlist %}
 {{ name }}-host-entry:
   host.present:
     - ip: {{ addrlist if addrlist is string else addrlist|first }}
     - names:
+        {%- if shorthost and '.' in name %}
+      - {{ name.split('.')[0] }}
+        {%- endif %}
       - {{ name }}
         {%- if domain %}
       - {{ name }}.{{ domain }}
         {%- endif %}
+    - clean: salt['pillar.get']('hostsfile:clean', False)
     {%- endif %}
 {% endfor %}
 
