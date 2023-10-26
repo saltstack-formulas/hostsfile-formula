@@ -1,7 +1,6 @@
 # populate /etc/hosts with names and IP entries from your salt cluster
 # the minion id has to be the fqdn for this to work
 
-{%- set fqdn = grains['id'] %}
 # example configuration for /etc/salt/minion:
 #
 # mine_functions:
